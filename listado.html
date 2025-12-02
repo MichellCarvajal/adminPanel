@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script type="module" src="./js/listado.js" defer></script>
+    <title>Registro</title>
+</head>
+
+<body class="bg-[#353b50] md:flex md:h-dvh">
+    <div class="bg-[#292f42] text-gray-200 h-full flex flex-col md:w-70">
+        <div class="font-semibold flex justify-between items-center h-20 px-5 text-lg ms:text-xl md:w-full md:px-0 md:justify-center md:text-2xl"
+            id="logo">
+            AdminPanel
+            <button class="border rounded-lg px-3 py-1 md:hidden" id="toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div class="hidden h-40 px-5 flex flex-col justify-center md:items-center sm:text-lg md:block md:flex-grow md:text-xl"
+            id="menu">
+            <div class="border-b w-38 mb-12 hidden md:block mt-2">
+                Menu
+            </div>
+            <ul class="flex flex-col gap-1 font-extralight md:font-normal md:gap-5">
+                <li class="flex md:items-center  md:gap-4">
+                    <div class="hidden md:block"><i class="fa-solid fa-grip text-2xl"></i></div>
+                    <a href="./index.html">Dashboard</a>
+                </li>
+                <li class="flex md:items-center  md:gap-4">
+                    <div class="hidden md:block"><i class="hidden fa-solid fa-file text-2xl md:block"></i></div>
+                    <a href="./registro.html">Registro</a>
+                </li>
+                <li class="flex md:items-center  md:gap-4">
+                    <div class="hidden md:block"><i class="hidden fa-solid fa-list text-2xl md:block"></i></div>
+                    <a href="./listado.html">Listado</a>
+                </li>
+                <li class="flex md:items-center md:gap-4">
+                    <div class="hidden md:block"><i class="hidden fa-solid fa-magnifying-glass text-2xl md:block"></i>
+                    </div>
+                    <a href="./buscar.html">Buscar</a>
+                </li>
+                <li class="flex md:items-center  md:gap-4">
+                    <div class="hidden md:block"><i class="hidden fa-solid fa-pen-to-square text-2xl md:block"></i>
+                    </div>
+                    <a href="./actualizar.html">Actualizar</a>
+                </li>
+                <li class="flex md:items-center  md:gap-4">
+                    <div class="hidden md:block"><i class="fa-solid fa-calculator text-2xl md:block"></i>
+                    </div>
+                    <a href="/calculadora/index.html">Calculadora</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-gray-200 flex flex-col w-dvw items-center">
+        <div class="flex justify-start w-100 sm:w-160 md:w-190 mb-10 lg:w-220 xl:w-240">
+            <div class="w-40 h-10 bg-[#292f42] rounded-lg mt-10 flex items-center justify-center shadow-md">
+                <h1 class="text-lg">Listado</h1>
+            </div>
+        </div>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg md:w-190 sm:160 lg:w-220 xl:w-240">
+            <table class="md:w-190 lg:w-220 xl:w-240 sm:w-160 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Nombre
+                        </th>
+                        <th scope="col" class="px-6 py-3 hidden lg:table-cell">
+                            Apellido
+                        </th>
+                        <th scope="col" class="px-5 py-3">
+                            Cedula
+                        </th>
+                        <th scope="col" class="px-6 py-3 hidden md:table-cell">
+                            Telefono
+                        </th>
+                        <th scope="col" class="px-4 py-3 hidden sm:table-cell">
+                            Email
+                        </th>
+                        <th scope="col" class="px-3 py-3 hidden xl:table-cell">
+                            Fecha Nacimiento
+                        </th>
+                        <th scope="col" class="px-5 py-3">
+                            Sexo
+                        </th>
+                        <th scope="col" class="px-5 py-3">
+                            Rol
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tablaPersonasBody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

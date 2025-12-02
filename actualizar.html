@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script type="module" src="./js/actualizar.js" defer></script>
+    <title>Registro</title>
+</head>
+
+<body class="bg-[#353b50] md:flex md:h-dvh">
+    <div class="bg-[#292f42] text-gray-200 h-full flex flex-col md:w-70">
+        <div class="font-semibold flex justify-between items-center h-20 px-5 text-lg ms:text-xl md:w-full md:px-0 md:justify-center md:text-2xl"
+            id="logo">
+            AdminPanel
+            <button class="border rounded-lg px-3 py-1 md:hidden" id="toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div class="hidden h-40 px-5 flex flex-col justify-center md:items-center sm:text-lg md:block md:flex-grow md:text-xl"
+            id="menu">
+            <div class="border-b w-38 mb-12 hidden md:block mt-2">
+                Menu
+            </div>
+            <ul class="flex flex-col gap-1 font-extralight md:font-normal md:gap-5">
+                <li class="flex md:items-center  md:gap-4">
+                    <div class="hidden md:block"><i class="fa-solid fa-grip text-2xl"></i></div>
+                    <a href="./index.html">Dashboard</a>
+                </li>
+                <li class="flex md:items-center  md:gap-4">
+                    <div class="hidden md:block"><i class="hidden fa-solid fa-file text-2xl md:block"></i></div>
+                    <a href="./registro.html">Registro</a>
+                </li>
+                <li class="flex md:items-center  md:gap-4">
+                    <div class="hidden md:block"><i class="hidden fa-solid fa-list text-2xl md:block"></i></div>
+                    <a href="./listado.html">Listado</a>
+                </li>
+                <li class="flex md:items-center md:gap-4">
+                    <div class="hidden md:block"><i class="hidden fa-solid fa-magnifying-glass text-2xl md:block"></i>
+                    </div>
+                    <a href="./buscar.html">Buscar</a>
+                </li>
+                <li class="flex md:items-center  md:gap-4">
+                    <div class="hidden md:block"><i class="hidden fa-solid fa-pen-to-square text-2xl md:block"></i>
+                    </div>
+                    <a href="./actualizar.html">Actualizar</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-gray-200 flex flex-col w-dvw items-center">
+        <div class="flex justify-start w-100 sm:w-160 md:w-190 mb-0 lg:w-220 xl:w-240">
+            <div class="w-40 h-10 bg-[#292f42] rounded-lg mt-4 flex items-center justify-center shadow-md">
+                <h1 class="text-lg">Actualizar</h1>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row w-100 sm:w-160 md:w-190 mb-0 lg:w-220 xl:w-240 items-center">
+            <div class="mt-2 sm:mt-0 sm:pl-4 md:pl-5 mb-4 md:mb-0">
+                <div class="flex items-center justify-center rounded-lg w-80 md:w-70 bg-[#292f42] px-2">
+                    <input type="text" id="busqueda" class="h-8 focus:outline-none w-80 md:w-70"
+                        placeholder="ingrese el parametro">
+                </div>
+            </div>
+            <div class="sm:pl-4 md:pl-5">
+                <div class="flex items-center justify-center rounded-lg w-80 md:w-70 bg-[#292f42] px-2 mb-2 md:mb-0">
+                    <select name="sexo" id="parametro" class="h-8 w-80 md:w-70 focus:outline-none bg-[#292f42]">
+                        <option disabled selected>Selecciona un parametro</option>
+                        <option value="nombres">nombre</option>
+                        <option value="apellidos">apellido</option>
+                        <option value="cedula">cedula</option>
+                        <option value="telefono">telefono</option>
+                        <option value="email">email</option>
+                        <option value="apellido">apellido</option>
+                        <option value="fecha_nacimiento">fecha_nacimiento</option>
+                        <option value="sexo">sexo</option>
+                        <option value="rol">rol</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="buscar" class="rounded-lg bg-blue-600 hover:bg-blue-800 hover:cursor-pointer w-80 h-8 mt-2 mb-2 md:mx-3 md:w-40">
+                    buscar
+                </button>
+            </div>
+            <div>
+                <button type="button" id="eliminar" class="rounded-lg bg-red-600 hover:bg-red-800 hover:cursor-pointer w-80 h-8 mt-2 mb-2 md:mx-3 md:w-40">
+                    eliminar
+                </button>
+            </div>
+        </div>
+        <form id="formulario" class="w-100 bg-[#292f42] rounded-lg shadow-md sm:w-160 md:w-220 sm:pt-2 md:pt-2">
+            <div class="grid justify-center items-center sm:grid-cols-2">
+                <div class="mt-4 sm:mt-0 sm:pl-4 md:pl-10">
+                    <label>Nombres:</label>
+                    <div
+                        class="flex items-center justify-center rounded-lg w-60 sm:w-70 md:w-90 md:h-12 sm:h-10 bg-[#353b50] gap-2 sm:gap-4 mt-2 mb-2">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="nombres" class="sm:w-55 md:w-75 focus:outline-none"
+                            placeholder="Ingrese su nombre">
+                    </div>
+                </div>
+                <div class="sm:pl-4 md:pl-10">
+                    <label>Apellidos:</label>
+                    <div
+                        class="flex items-center justify-center rounded-lg w-60 sm:w-70 sm:h-10 md:w-90 md:h-12 bg-[#353b50] gap-2 sm:gap-4 mt-2 mb-2">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="apellidos" class="sm:w-55 md:w-75 focus:outline-none"
+                            placeholder="Ingrese su apellido">
+                    </div>
+                </div>
+                <div class="sm:pl-4 md:pl-10">
+                    <label>Cedula:</label>
+                    <div
+                        class="flex items-center justify-center rounded-lg w-60 sm:w-70 sm:h-10 md:w-90 md:h-12 bg-[#353b50] gap-2 sm:gap-4 mt-2 mb-2">
+                        <i class="fa-solid fa-id-card"></i>
+                        <input type="number" id="cedula" class="sm:w-55 md:w-75 focus:outline-none"
+                            placeholder="Ingrese su cedula">
+                    </div>
+                </div>
+                <div class="sm:pl-4 md:pl-10">
+                    <label>Email:</label>
+                    <div
+                        class="flex items-center justify-center rounded-lg w-60 sm:w-70 sm:h-10 md:w-90 md:h-12 bg-[#353b50] gap-2 sm:gap-4 mt-2 mb-2">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="email" class="sm:w-55 md:w-75 focus:outline-none"
+                            placeholder="Ingrese su e-mail">
+                    </div>
+                </div>
+                <div class="sm:pl-4 md:pl-10">
+                    <label>Fecha de nacimiento:</label>
+                    <div
+                        class="flex items-center justify-center rounded-lg w-60 sm:w-70 sm:h-10 md:w-90 md:h-12 bg-[#353b50] gap-2 sm:gap-4 mt-2 mb-2">
+                        <input type="date" id="fecha_nacimiento" class="sm:w-55 md:w-75 focus:outline-none">
+                    </div>
+                </div>
+                <div class="sm:pl-4 md:pl-10">
+                    <label>Telefono:</label>
+                    <div
+                        class="flex items-center justify-center rounded-lg w-60 sm:w-70 sm:h-10 md:w-90 md:h-12 bg-[#353b50] gap-2 sm:gap-4 mt-2 mb-2">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="number" id="telefono" class="sm:w-55 md:w-75 focus:outline-none"
+                            placeholder="Ingrese su telefono">
+                    </div>
+                </div>
+                <div class="sm:pl-4 md:pl-10">
+                    <label for="sexo">Sexo: </label>
+                    <div
+                        class="flex items-center justify-center rounded-lg w-60 sm:w-70 sm:h-10 md:w-90 md:h-12 bg-[#353b50] gap-2 sm:gap-4 mt-2 mb-2">
+                        <i class="fa-solid fa-venus-mars"></i>
+                        <select name="sexo" id="sexo" class="sm:w-55 md:w-75 focus:outline-none bg-[#353b50]">
+                            <option disabled selected>Selecciona una opcion</option>
+                            <option value="masculino">masculino</option>
+                            <option value="femenino">femenino</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sm:pl-4 md:pl-10">
+                    <label for="rol">Rol:</label>
+                    <div
+                        class="flex items-center justify-center rounded-lg w-60 sm:w-70 sm:h-10 md:w-90 md:h-12 bg-[#353b50] gap-2 sm:gap-4 mt-2 mb-2">
+                        <i class="fa-solid fa-key"></i>
+                        <select name="rol" id="rol" class="sm:w-55 md:w-75 focus:outline-none bg-[#353b50]">
+                            <option disabled selected>Selecciona una opcion</option>
+                            <option value="admin">admin</option>
+                            <option value="usuario">usuario</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <button type="submit" id="enviarbtn"
+                    class="rounded-lg bg-blue-600 hover:bg-blue-800 hover:cursor-pointer w-60 mt-2 mb-4 sm:w-70 sm:h-10 md:w-90 md:h-12">
+                    Actualizar
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
