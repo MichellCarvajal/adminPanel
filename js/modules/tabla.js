@@ -1,6 +1,7 @@
 import { arreglo_de_personas } from "./almacenamiento.js";
+import { mostrarPersonas } from "./metodoAPI.js";
 
-const mostrarTabla = () => {
+const mostrarTabla =  async () => {
     const tablaBody = document.getElementById('tablaPersonasBody');
 
     if (!tablaBody) {
@@ -8,8 +9,9 @@ const mostrarTabla = () => {
     }
 
     tablaBody.innerHTML = '';
+    const personas = await mostrarPersonas();
 
-    if (arreglo_de_personas.length === 0) {
+    if (personas.length === 0) {
         const row = tablaBody.insertRow();
         row.classList.add('bg-white', 'border-b', 'dark:bg-gray-800', 'dark:border-gray-700', 'border-gray-200');
         const cell = row.insertCell();
@@ -19,7 +21,7 @@ const mostrarTabla = () => {
         return;
     }
 
-    arreglo_de_personas.forEach((persona, index) => {
+    personas.forEach((persona, index) => {
         const row = tablaBody.insertRow();
         row.classList.add(
             'bg-white',
@@ -40,11 +42,11 @@ const mostrarTabla = () => {
             'whitespace-nowrap',
             'dark:text-white'
         );
-        nombreCell.textContent = persona.nombres;
+        nombreCell.textContent = persona.nombre;
         row.appendChild(nombreCell);
 
         const apellidoCell = row.insertCell();
-        apellidoCell.textContent = persona.apellidos;
+        apellidoCell.textContent = persona.apellido;
         apellidoCell.classList.add('px-6', 'py-4', 'hidden', 'lg:table-cell');
 
         const cedulaCell = row.insertCell();

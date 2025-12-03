@@ -1,5 +1,5 @@
 import { arreglo_de_personas } from "./almacenamiento.js";
-import { buscarPesona } from "./metodoAPI.js";
+import { buscarPersona } from "./metodoAPI.js";
 
 const mostrarBusqueda = () => {
   const tablaBody = document.getElementById("tablaPersonasBody");
@@ -15,7 +15,7 @@ const mostrarBusqueda = () => {
     `;
   };
 
-  buscarBtn.addEventListener("click", () => {
+  buscarBtn.addEventListener("click",  async () => {
     const texto = busquedaElem.value.trim().toLowerCase();
     const param = parametroElem.value;
 
@@ -24,8 +24,7 @@ const mostrarBusqueda = () => {
       return;
     }
 
-    const resultados = []
-    resultados.push(buscarPesona(param, texto));
+    const resultados = await buscarPersona(param, texto);
 
     tablaBody.innerHTML = "";
 

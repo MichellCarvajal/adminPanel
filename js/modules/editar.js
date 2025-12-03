@@ -1,8 +1,9 @@
 import { arreglo_de_personas, guardarPersonasEnLocalStorage } from "./almacenamiento.js";
+import { actualizarPersona, buscarPersona, eliminarPersona } from "./metodoAPI.js";
 
-const actualizar = () => {
+const actualizar =  () => {
 
-    let indiceEncontrado = null;
+    let persona = null;
 
     const inputBusqueda = document.getElementById("busqueda");
     const selectParametro = document.getElementById("parametro");
@@ -20,7 +21,7 @@ const actualizar = () => {
 
     const btnEliminar = document.getElementById("eliminar");
 
-    btnBuscar.addEventListener("click", () => {
+    btnBuscar.addEventListener("click", async () => {
         const texto = inputBusqueda.value.trim().toLowerCase();
         const param = selectParametro.value;
 
@@ -29,20 +30,18 @@ const actualizar = () => {
             return;
         }
 
-        const i = arreglo_de_personas.findIndex(persona =>
-            String(persona[param]).toLowerCase() === texto
-        );
+        const personaEncontrada = await buscarPersona(param, texto);
 
-        if (i === -1) {
+        if (!personaEncontrada) {
             alert("No se encontró a nadie.");
             return;
         }
 
-        const persona = arreglo_de_personas[i];
-        indiceEncontrado = i;
+        persona = personaEncontrada[0];
+        
 
-        inputNombres.value = persona.nombres
-        inputApellidos.value = persona.apellidos
+        inputNombres.value = persona.nombre
+        inputApellidos.value = persona.apellido
         inputCedula.value = persona.cedula
         inputTelefono.value = persona.telefono
         inputEmail.value = persona.email
@@ -52,18 +51,18 @@ const actualizar = () => {
     });
 
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        if (indiceEncontrado === null) {
+        if (persona === null) {
             alert("Primero busca a una persona.");
             return;
         }
 
-        arreglo_de_personas[indiceEncontrado] = {
-            ...arreglo_de_personas[indiceEncontrado],
-            nombres: inputNombres.value,
-            apellidos: inputApellidos.value,
+        persona = {
+            ...persona,
+            nombre: inputNombres.value,
+            apellido: inputApellidos.value,
             cedula: inputCedula.value,
             telefono: inputTelefono.value,
             email: inputEmail.value,
@@ -72,16 +71,16 @@ const actualizar = () => {
             rol: inputRol.value,
         };
 
-        guardarPersonasEnLocalStorage()
+        await actualizarPersona(persona.id, persona);
 
         alert("Persona actualizada con éxito");
 
         form.reset();
-        indiceEncontrado = null;
+        persona = null;
     });
 
     btnEliminar.addEventListener("click", () => {
-        if (indiceEncontrado === null) {
+        if (persona === null) {
             alert("Primero busca a alguien para eliminar.");
             return;
         }
@@ -89,13 +88,12 @@ const actualizar = () => {
         const confirmar = confirm("¿Seguro que deseas eliminar a esta persona?");
         if (!confirmar) return;
 
-        arreglo_de_personas.splice(indiceEncontrado, 1);
-        guardarPersonasEnLocalStorage();
+        eliminarPersona(persona.id);
 
         alert("Persona eliminada");
 
         form.reset();
-        indiceEncontrado = null;
+        persona = null;
     });
 
 };

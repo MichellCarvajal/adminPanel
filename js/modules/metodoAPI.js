@@ -10,7 +10,7 @@ async function enviarPersona(persona) {
     return data;
 }
 
-async function buscarPesona(parametro, valor) {
+async function buscarPersona(parametro, valor) {
     const res = await fetch(API_URL);
     const personas = await res.json();
 
@@ -18,8 +18,28 @@ async function buscarPesona(parametro, valor) {
     return resultados;
 }
 
-async function actualizarPersona(params) {
-    
+async function mostrarPersonas() {
+    const res = await fetch(API_URL);
+    const personas = await res.json();
+    return personas;
 }
 
-export { enviarPersona, buscarPesona, actualizarPersona };
+async function actualizarPersona(id, personaActualizada) {
+    const res = await fetch(`${API_URL}${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(personaActualizada)
+    });
+    const data = await res.json();
+    return data;
+}
+
+async function eliminarPersona(id) {
+    const res = await fetch(`${API_URL}${id}`, {
+        method: "DELETE"
+    });
+    const data = await res.json();
+    return data;
+}
+
+export { enviarPersona, buscarPersona, actualizarPersona, mostrarPersonas, eliminarPersona };
